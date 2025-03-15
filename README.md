@@ -3,7 +3,7 @@ Encurtador de Links 🔗
 Projeto de um encurtador de links simples usando Python (Flask), HTML, CSS e JavaScript. Permite encurtar URLs e redirecionar automaticamente quando um link encurtado é acessado.
 
 📸 Imagem do Projeto
-
+![Amigo Secreto!!!](https://github.com/coliveira1977/desafio_amigo_secreto/blob/mai/assets/amigo-secreto.png?raw=true)
 
 
 🚀 Tecnologias Utilizadas

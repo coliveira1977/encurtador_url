@@ -52,31 +52,31 @@ http://127.0.0.1:5000/
 
 🔹 Backend (Flask - app.py)
 
-from flask import Flask, request, jsonify, redirect, render_template
-import random
-import string
+    from flask import Flask, request, jsonify, redirect, render_template
+    import random
+    import string
 
-app = Flask(__name__)
-url_mapping = {}
+    app = Flask(__name__)
+    url_mapping = {}
 
-def generate_short_url():
-    return ''.join(random.choices(string.ascii_letters + string.digits, k=6))
+    def generate_short_url():
+        return ''.join(random.choices(string.ascii_letters + string.digits, k=6))
 
-@app.route('/')
-def home():
-    return render_template('index.html')
+    @app.route('/')
+    def home():
+        return render_template('index.html')
 
-@app.route('/shorten', methods=['POST'])
-def shorten_url():
-    data = request.json
-    original_url = data.get("url")
-    short_code = generate_short_url()
-    url_mapping[short_code] = original_url
-    return jsonify({"short_url": f"http://127.0.0.1:5000/{short_code}"})
+    @app.route('/shorten', methods=['POST'])
+    def shorten_url():
+        data = request.json
+        original_url = data.get("url")
+        short_code = generate_short_url()
+        url_mapping[short_code] = original_url
+        return jsonify({"short_url": f"http://127.0.0.1:5000/{short_code}"})
 
-@app.route('/<short_code>')
-def redirect_to_url(short_code):
-    return redirect(url_mapping.get(short_code, '/'))
+    @app.route('/<short_code>')
+    def redirect_to_url(short_code):
+        return redirect(url_mapping.get(short_code, '/'))
 
 🔹 Frontend (HTML - index.html)
 

@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, redirect
+from flask import Flask, request, jsonify, redirect, render_template
 import random
 import string
 
@@ -10,6 +10,11 @@ url_mapping = {}
 def generate_short_url():
     """Gera um código curto aleatório de 6 caracteres"""
     return ''.join(random.choices(string.ascii_letters + string.digits, k=6))
+
+@app.route('/')
+def home():
+    """Serve a página inicial"""
+    return render_template('index.html')
 
 @app.route('/shorten', methods=['POST'])
 def shorten_url():
